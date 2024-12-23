@@ -14,10 +14,10 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [x] Create a branch called `assignment-two`.
+- [x] Ensure that the repository is public.
+- [x] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [x] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack at `#cohort-5-help`. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
@@ -54,7 +54,16 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 SCD:
+The CUSTOMER_ADDRESS table with Type 1 architecture would mean changes will overwrite. 
+This means that if a customer updates their address, the previous address is overwritten, so only the current address will be stored. No new records would need to be created, but there will be no history of changes.
+
+Type 2 SCD:
+The CUSTOMER_ADDRESS table with Type 2 architecture would mean that changes are retained. This means that if a customer updates their address, a new record is added so that the old address is retained. 
+There would be a historical track record of any address changes, which means there would also need to be additional columns in the table to keep track of these changes. For example, you can have a column named
+"version" that tracks the version of the record, so if a current version is 0 and a customer updates the address, the record with version 0 will be retained and a new record would be created with version 1. 
+You can also create columns that track "effective date", which means having a column for a start date and another for end date, keeping track of the dates on changes to the address.
+
 ```
 
 ***
